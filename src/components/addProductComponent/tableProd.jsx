@@ -1,9 +1,12 @@
 import React from 'react'
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Table } from '@mui/material';
+
+import { DataGrid } from '@mui/x-data-grid';
+
+
 
 const style = {
     position: 'absolute',
@@ -17,10 +20,16 @@ const style = {
     p: 4,
 };
 
-function TableProd() {
+function TableProd({ data }) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    const columns = [
+        { field: 'id', headerName: 'ID', width: 70 },
+        { field: 'product', headerName: 'Producto', width: 110 },
+        { field: 'category', headerName: 'Categoria', width: 120 },
+    ];
 
     return (
         <div>
@@ -33,7 +42,17 @@ function TableProd() {
             >
                 <Box sx={style}>
                     <Table>
-
+                        <DataGrid
+                            rows={data}
+                            columns={columns}
+                            initialState={{
+                                pagination: {
+                                    paginationModel: { page: 0, pageSize: 5 },
+                                },
+                            }}
+                            pageSizeOptions={[5, 10]}
+                            checkboxSelection
+                        />
                     </Table>
                 </Box>
             </Modal>

@@ -1,15 +1,31 @@
 import { Box, Button, Card, CardActionArea, CardContent, Container, Input } from '@mui/material';
 import React from 'react'
-import TableProd from './tableProd';
 
-function AddProduct() {
+
+function AddProduct({onSendData}) {
     const [newProduct, setNewProduct] = React.useState([]);
+    const [newCategory, setCategory] = React.useState([]);
 
-    const addProduct = () => {
-        const newProdLoad = [...newProduct];
-        console.log(newProdLoad);
+    const handleChangeProd = (e) => {
+        setNewProduct(e.target.value);
+    }
+
+    const handleChangeCat = (e) => {
+        setCategory(e.target.value);
+    }
+
+    const addProductTable = () => {
+        const newProd = {
+            id: onSendData.length + 1,
+            newProduct,
+            newCategory
+        }
+        onSendData(newProd);
         console.log(newProduct);
+        console.log(newCategory);
         setNewProduct([]);
+        setCategory([]);
+
     }
 
     return (
@@ -18,15 +34,14 @@ function AddProduct() {
                 <CardActionArea>
                     <CardContent>
                         <Box sx={{ width: "100%" }}>
-                            <Input type="text" value={newProduct} onChange={(event) => setNewProduct(event.target.value)} />
-                            <Button onClick={addProduct}>Agregar producto</Button>
+                            <Input placeholder='producto' type="text" value={newProduct} onChange={handleChangeProd} />
+                            <Input placeholder='categoria' type="text" value={newCategory} onChange={handleChangeCat} />
+                            <Button onClick={addProductTable}>Agregar producto</Button>
                         </Box>
                     </CardContent>
                 </CardActionArea>
             </Card>
-                <Button>
-                        <TableProd />
-                </Button>
+        
         </Container>
     )
 }
