@@ -2,11 +2,7 @@ import React from 'react'
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import { Table } from '@mui/material';
-
-import { DataGrid } from '@mui/x-data-grid';
-
-
+import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 
 const style = {
     position: 'absolute',
@@ -20,16 +16,11 @@ const style = {
     p: 4,
 };
 
-function TableProd({ data }) {
+function TableProd({data}) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const columns = [
-        { field: 'id', headerName: 'ID', width: 70 },
-        { field: 'product', headerName: 'Producto', width: 110 },
-        { field: 'category', headerName: 'Categoria', width: 120 },
-    ];
 
     return (
         <div>
@@ -42,17 +33,25 @@ function TableProd({ data }) {
             >
                 <Box sx={style}>
                     <Table>
-                        <DataGrid
-                            rows={data}
-                            columns={columns}
-                            initialState={{
-                                pagination: {
-                                    paginationModel: { page: 0, pageSize: 5 },
-                                },
-                            }}
-                            pageSizeOptions={[5, 10]}
-                            checkboxSelection
-                        />
+                        <TableHead>
+                            <TableRow>
+                                <TableCell align="center">Producto</TableCell>
+                                <TableCell align="center">Categoria</TableCell>
+                                <TableCell align="center">ver</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {data.map((prod) => (
+                                <TableRow
+                                    key={prod.name}
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                >
+                                    <TableCell align="center">{prod.product}</TableCell>
+                                    <TableCell align="center">{prod.category}</TableCell>
+                                    <TableCell align="center">{}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
                     </Table>
                 </Box>
             </Modal>

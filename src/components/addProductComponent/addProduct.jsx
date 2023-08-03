@@ -2,12 +2,12 @@ import { Box, Button, Card, CardActionArea, CardContent, Container, Input } from
 import React from 'react'
 
 
-function AddProduct({onSendData}) {
-    const [newProduct, setNewProduct] = React.useState([]);
-    const [newCategory, setCategory] = React.useState([]);
+function AddProduct({ sendProdLoad }) {
+    const [product, setProduct] = React.useState([]);
+    const [category, setCategory] = React.useState([]);
 
     const handleChangeProd = (e) => {
-        setNewProduct(e.target.value);
+        setProduct(e.target.value);
     }
 
     const handleChangeCat = (e) => {
@@ -15,17 +15,14 @@ function AddProduct({onSendData}) {
     }
 
     const addProductTable = () => {
-        const newProd = {
-            id: onSendData.length + 1,
-            newProduct,
-            newCategory
-        }
-        onSendData(newProd);
+        const newProduct = {
+            product,
+            category,
+        };
+        sendProdLoad(newProduct);
         console.log(newProduct);
-        console.log(newCategory);
-        setNewProduct([]);
-        setCategory([]);
-
+        setProduct('');
+        setCategory('');
     }
 
     return (
@@ -34,14 +31,13 @@ function AddProduct({onSendData}) {
                 <CardActionArea>
                     <CardContent>
                         <Box sx={{ width: "100%" }}>
-                            <Input placeholder='producto' type="text" value={newProduct} onChange={handleChangeProd} />
-                            <Input placeholder='categoria' type="text" value={newCategory} onChange={handleChangeCat} />
+                            <Input placeholder='producto' type="text" value={product} onChange={handleChangeProd} />
+                            <Input placeholder='categoria' type="text" value={category} onChange={handleChangeCat} />
                             <Button onClick={addProductTable}>Agregar producto</Button>
                         </Box>
                     </CardContent>
                 </CardActionArea>
             </Card>
-        
         </Container>
     )
 }

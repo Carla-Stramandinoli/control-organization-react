@@ -6,12 +6,12 @@ import TableProd from '../components/addProductComponent/tableProd';
 function HomeContainer() {
 const [data, setData] = React.useState([]);
 
-const onSendData = (newProdData) => {
-    setData([...data, newProdData])
+const handleSendData = (newProduct) => {
+    setData([...data, newProduct])
 }
     return (
         <div>
-            <AddProduct onSendData={onSendData}/>
+            <AddProduct sendProdLoad={handleSendData}/>
             <Button>
                 <TableProd data={data}/>
             </Button>
