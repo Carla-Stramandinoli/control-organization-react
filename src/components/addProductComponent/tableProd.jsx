@@ -16,11 +16,10 @@ const style = {
     p: 4,
 };
 
-function TableProd({data}) {
+function TableProd({ data }) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
 
     return (
         <div>
@@ -35,27 +34,29 @@ function TableProd({data}) {
                     <Table>
                         <TableHead>
                             <TableRow>
+                                <TableCell align="center">ID</TableCell>
                                 <TableCell align="center">Producto</TableCell>
                                 <TableCell align="center">Categoria</TableCell>
-                                <TableCell align="center">ver</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {data.map((prod) => (
-                                <TableRow
-                                    key={prod.name}
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                >
+                                <TableRow key={prod.name}>
+                                    <TableCell align="center">{prod.id}</TableCell>
                                     <TableCell align="center">{prod.product}</TableCell>
-                                    <TableCell align="center">{prod.category}</TableCell>
-                                    <TableCell align="center">{}</TableCell>
+                                    {prod.category === 'verduleria'
+                                        ? <TableCell style={{ backgroundColor: 'green', color: 'white' }} align="center">{prod.category}</TableCell>
+                                        : prod.category === 'supermercado'
+                                            ? <TableCell style={{ backgroundColor: 'red', color: 'white' }} align="center">{prod.category}</TableCell>
+                                            : <TableCell align="center">{prod.category}</TableCell>
+                                    }
                                 </TableRow>
                             ))}
                         </TableBody>
                     </Table>
                 </Box>
             </Modal>
-        </div>
+        </div >
     )
 }
 

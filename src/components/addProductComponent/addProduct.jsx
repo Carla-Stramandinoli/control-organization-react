@@ -1,10 +1,13 @@
 import { Box, Button, Card, CardActionArea, CardContent, Container, Input } from '@mui/material';
 import React from 'react'
+import Swal from 'sweetalert2';
+
 
 
 function AddProduct({ sendProdLoad }) {
-    const [product, setProduct] = React.useState([]);
-    const [category, setCategory] = React.useState([]);
+    const [product, setProduct] = React.useState('');
+    const [category, setCategory] = React.useState('');
+    const [id, setId] = React.useState(0)
 
     const handleChangeProd = (e) => {
         setProduct(e.target.value);
@@ -15,7 +18,15 @@ function AddProduct({ sendProdLoad }) {
     }
 
     const addProductTable = () => {
+        if(product === '' || category === ''){
+            console.log(product);
+            Swal.fire(
+                'Todos los campos deben estar completos!'
+            )
+            return;
+        }
         const newProduct = {
+            id,
             product,
             category,
         };
@@ -23,14 +34,15 @@ function AddProduct({ sendProdLoad }) {
         console.log(newProduct);
         setProduct('');
         setCategory('');
+        setId(id + 1);
     }
 
     return (
         <Container>
-            <Card sx={{ maxWidth: '30%', padding: '2%', marginTop: '15%', marginLeft: '31%' }}>
+            <Card sx={{width: '70%', maxWidth: '24%', padding: '2%', marginTop: '15%', marginLeft: '35%' }}>
                 <CardActionArea>
                     <CardContent>
-                        <Box sx={{ width: "100%" }}>
+                        <Box sx={{ width: "80%" }}>
                             <Input placeholder='producto' type="text" value={product} onChange={handleChangeProd} />
                             <Input placeholder='categoria' type="text" value={category} onChange={handleChangeCat} />
                             <Button onClick={addProductTable}>Agregar producto</Button>

@@ -7,7 +7,7 @@ function HomeContainer() {
 const [data, setData] = React.useState([]);
 
 const handleSendData = (newProduct) => {
-    setData([...data, newProduct])
+    setData([...data, newProduct]);
 }
     return (
         <div>
@@ -19,4 +19,4 @@ const handleSendData = (newProduct) => {
     )
 }
 
-export default HomeContainer;
+export default HomeContainer;   
