@@ -16,7 +16,7 @@ const style = {
     p: 4,
 };
 
-function TableProd({ data }) {
+function ModalTableProd({ data }) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -41,7 +41,7 @@ function TableProd({ data }) {
                         </TableHead>
                         <TableBody>
                             {data.map((prod) => (
-                                <TableRow key={prod.name}>
+                                <TableRow key={prod.id}>
                                     <TableCell align="center">{prod.id}</TableCell>
                                     <TableCell align="center">{prod.product}</TableCell>
                                     {prod.category === 'verduleria'
@@ -60,4 +60,4 @@ function TableProd({ data }) {
     )
 }
 
-export default TableProd;
+export default ModalTableProd;

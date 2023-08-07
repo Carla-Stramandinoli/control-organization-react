@@ -2,8 +2,6 @@ import { Box, Button, Card, CardActionArea, CardContent, Container, Input } from
 import React from 'react'
 import Swal from 'sweetalert2';
 
-
-
 function AddProduct({ sendProdLoad }) {
     const [product, setProduct] = React.useState('');
     const [category, setCategory] = React.useState('');
@@ -39,7 +37,7 @@ function AddProduct({ sendProdLoad }) {
 
     return (
         <Container>
-            <Card sx={{width: '70%', maxWidth: '24%', padding: '2%', marginTop: '15%', marginLeft: '35%' }}>
+            <Card sx={{width: '70%', maxWidth: '24%', padding: '2%', marginTop: '7%', marginLeft: '35%' }}>
                 <CardActionArea>
                     <CardContent>
                         <Box sx={{ width: "80%" }}>
