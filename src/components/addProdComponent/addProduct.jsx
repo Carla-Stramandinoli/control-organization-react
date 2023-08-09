@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardActionArea, CardContent, Container, Input } from '@mui/material';
+import { Box, Button, Card, CardActionArea, CardContent, Container, FormControl, Input, InputLabel, MenuItem, Select } from '@mui/material';
 import React from 'react'
 import Swal from 'sweetalert2';
 
@@ -16,7 +16,7 @@ function AddProduct({ sendProdLoad }) {
     }
 
     const addProductTable = () => {
-        if(product === '' || category === ''){
+        if (product === '' || category === '') {
             console.log(product);
             Swal.fire(
                 'Todos los campos deben estar completos!'
@@ -37,12 +37,24 @@ function AddProduct({ sendProdLoad }) {
 
     return (
         <Container>
-            <Card sx={{width: '70%', maxWidth: '24%', padding: '2%', marginTop: '7%', marginLeft: '35%' }}>
+            <Card sx={{ width: '70%', maxWidth: '24%', padding: '2%', marginTop: '7%', marginLeft: '35%' }}>
                 <CardActionArea>
                     <CardContent>
                         <Box sx={{ width: "80%" }}>
-                            <Input placeholder='producto' type="text" value={product} onChange={handleChangeProd} />
-                            <Input placeholder='categoria' type="text" value={category} onChange={handleChangeCat} />
+                            <Input placeholder='Producto' type="text" value={product} onChange={handleChangeProd} />
+                            <FormControl fullWidth sx={{marginTop: 2}}>
+                                <InputLabel  id="demo-simple-select-label">Categoria</InputLabel>
+                                <Select
+                                    value={category}
+                                    label='Categoria'
+                                    onChange={handleChangeCat}
+                                    sx={{ minWidth: 200, marginTop: 1 }}
+                                >
+                                    <MenuItem value={'verduleria'}>Verduleria</MenuItem>
+                                    <MenuItem value={'supermercado'}>Supermercado</MenuItem>
+                                    <MenuItem value={'otros'}>Otros</MenuItem>
+                                </Select>
+                            </FormControl>
                             <Button onClick={addProductTable}>Agregar producto</Button>
                         </Box>
                     </CardContent>

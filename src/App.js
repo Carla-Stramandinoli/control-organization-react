@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import ModalTableProd from './components/addProdComponent/modalTableProd';
-import TableProducts from './components/tableProdComponent/tableProducts';
-import HomeContainer from './container/homeContainer';
+import ModalTableProd from './components/tableProdComponent/modalTableProd';
+import TableProducts from './container/tabsContainer/tabsProducts';
+import HomeContainer from './container/homeContainer/homeContainer';
 
 function App() {
   return (

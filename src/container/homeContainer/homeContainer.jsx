@@ -1,8 +1,8 @@
 import { Button } from '@mui/base';
 import React from 'react'
-import AddProduct from '../components/addProdComponent/addProduct';
-import ModalTableProd from '../components/addProdComponent/modalTableProd';
-import TableProducts from '../components/tableProdComponent/tableProducts';
+import AddProduct from '../../components/addProdComponent/addProduct';
+import ModalTableProd from '../../components/tableProdComponent/modalTableProd';
+import TableProducts from '../../components/tableProdComponent/tableProducts';
 
 
 function HomeContainer() {
@@ -14,7 +14,7 @@ const handleSendData = (newProduct) => {
     return (
         <div>
             <AddProduct sendProdLoad={handleSendData}/>
-            <TableProducts />
+            <TableProducts data={data}/>
             <Button>
                 <ModalTableProd data={data}/>
             </Button>
