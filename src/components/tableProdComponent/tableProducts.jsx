@@ -9,9 +9,8 @@ const categories = [{ id: 'greengrocery', title: 'verduleria' }, { id: 'supermar
 function TableProducts({ data }) {
     const { itemId } = useParams;
 
-
     React.useEffect(() => {
-        if (data.category === 'verduleria') {
+        if (categories.some(categorie => categorie.id === itemId)) {
 
         }
     }, [itemId])

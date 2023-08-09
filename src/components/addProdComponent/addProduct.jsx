@@ -42,11 +42,10 @@ function AddProduct({ sendProdLoad }) {
                     <CardContent>
                         <Box sx={{ width: "80%" }}>
                             <Input placeholder='Producto' type="text" value={product} onChange={handleChangeProd} />
-                            <FormControl fullWidth sx={{marginTop: 2}}>
-                                <InputLabel  id="demo-simple-select-label">Categoria</InputLabel>
+                            <FormControl fullWidth sx={{marginTop: 1}}>
+                                <InputLabel sx={{top: "8px"}} id="demo-simple-select-label">Categoria</InputLabel>
                                 <Select
                                     value={category}
-                                    label='Categoria'
                                     onChange={handleChangeCat}
                                     sx={{ minWidth: 200, marginTop: 1 }}
                                 >
