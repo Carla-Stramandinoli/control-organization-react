@@ -1,10 +1,12 @@
-import { Box, Button, Card, CardActionArea, CardContent, Container, FormControl, Input, InputLabel, MenuItem, Select } from '@mui/material';
+import { Box, Button, Card, CardActionArea, CardContent, Container, FormControl, FormControlLabel, FormLabel, Input, InputLabel, MenuItem, Radio, RadioGroup, Select } from '@mui/material';
 import React from 'react'
 import Swal from 'sweetalert2';
 
 function AddProduct({ sendProdLoad }) {
     const [product, setProduct] = React.useState('');
     const [category, setCategory] = React.useState('');
+    const [quantity, setQuantity] = React.useState('');
+
     const [id, setId] = React.useState(0)
 
     const handleChangeProd = (e) => {
@@ -13,6 +15,10 @@ function AddProduct({ sendProdLoad }) {
 
     const handleChangeCat = (e) => {
         setCategory(e.target.value);
+    }
+
+    const handleChangeQuantity = (e) => {
+        setQuantity(e.target.value);
     }
 
     const addProductTable = () => {
@@ -32,6 +38,7 @@ function AddProduct({ sendProdLoad }) {
         console.log(newProduct);
         setProduct('');
         setCategory('');
+        setQuantity('')
         setId(id + 1);
     }
 
@@ -42,16 +49,25 @@ function AddProduct({ sendProdLoad }) {
                     <CardContent>
                         <Box sx={{ width: "80%" }}>
                             <Input placeholder='Producto' type="text" value={product} onChange={handleChangeProd} />
-                            <FormControl fullWidth sx={{marginTop: 1}}>
-                                <InputLabel sx={{top: "8px"}} id="demo-simple-select-label">Categoria</InputLabel>
+                            <Input placeholder='Cantidad' type="number" value={quantity} onChange={handleChangeQuantity} />
+                            <FormControl sx={{ minWidth: 231, marginTop: 1 }}>
+                                <FormLabel id="demo-row-radio-buttons-group-label">Medida</FormLabel>
+                                <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group">
+                                    <FormControlLabel value="Kg" control={<Radio color="success" />} label="Kg" />
+                                    <FormControlLabel value="Gr" control={<Radio color="success" />} label="Gr" />
+                                    <FormControlLabel value="Unidad" control={<Radio color="success" />} label="Unidad" />
+                                </RadioGroup>
+                            </FormControl>
+                            <FormControl fullWidth>
+                                <InputLabel sx={{ top: "8px" }} id="demo-simple-select-label">Categoria</InputLabel>
                                 <Select
                                     value={category}
                                     onChange={handleChangeCat}
-                                    sx={{ minWidth: 200, marginTop: 1 }}
+                                    sx={{ marginTop: 1 }}
                                 >
-                                    <MenuItem value={'verduleria'}>Verduleria</MenuItem>
-                                    <MenuItem value={'supermercado'}>Supermercado</MenuItem>
-                                    <MenuItem value={'otros'}>Otros</MenuItem>
+                                    <MenuItem value={1}>Verduleria</MenuItem>
+                                    <MenuItem value={2}>Supermercado</MenuItem>
+                                    <MenuItem value={3}>Otros</MenuItem>
                                 </Select>
                             </FormControl>
                             <Button onClick={addProductTable}>Agregar producto</Button>
