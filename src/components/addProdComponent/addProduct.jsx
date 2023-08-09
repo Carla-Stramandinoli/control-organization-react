@@ -6,7 +6,7 @@ function AddProduct({ sendProdLoad }) {
     const [product, setProduct] = React.useState('');
     const [category, setCategory] = React.useState('');
     const [quantity, setQuantity] = React.useState('');
-
+    const [measure, setMeasure] = React.useState('kg');
     const [id, setId] = React.useState(0)
 
     const handleChangeProd = (e) => {
@@ -19,6 +19,10 @@ function AddProduct({ sendProdLoad }) {
 
     const handleChangeQuantity = (e) => {
         setQuantity(e.target.value);
+    }
+
+    const handleChangeMeasure = (e) => {
+        setMeasure(e.target.value);
     }
 
     const addProductTable = () => {
@@ -38,7 +42,8 @@ function AddProduct({ sendProdLoad }) {
         console.log(newProduct);
         setProduct('');
         setCategory('');
-        setQuantity('')
+        setQuantity('');
+        setMeasure("kg")
         setId(id + 1);
     }
 
@@ -52,10 +57,10 @@ function AddProduct({ sendProdLoad }) {
                             <Input placeholder='Cantidad' type="number" value={quantity} onChange={handleChangeQuantity} />
                             <FormControl sx={{ minWidth: 231, marginTop: 1 }}>
                                 <FormLabel id="demo-row-radio-buttons-group-label">Medida</FormLabel>
-                                <RadioGroup row aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group">
-                                    <FormControlLabel value="Kg" control={<Radio color="success" />} label="Kg" />
-                                    <FormControlLabel value="Gr" control={<Radio color="success" />} label="Gr" />
-                                    <FormControlLabel value="Unidad" control={<Radio color="success" />} label="Unidad" />
+                                <RadioGroup value={measure} onChange={handleChangeMeasure} row aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group">
+                                    <FormControlLabel value="kg" control={<Radio color="success" />} label="Kg" />
+                                    <FormControlLabel value="gr" control={<Radio color="success" />} label="Gr" />
+                                    <FormControlLabel value="unidad" control={<Radio color="success" />} label="Unidad" />
                                 </RadioGroup>
                             </FormControl>
                             <FormControl fullWidth>
