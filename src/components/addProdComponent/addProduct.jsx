@@ -1,11 +1,11 @@
-import { Box, Button, Card, CardActionArea, CardContent, Container, FormControl, FormControlLabel, FormLabel, Input, InputLabel, MenuItem, Radio, RadioGroup, Select } from '@mui/material';
+import { Box, Button, Card, CardActionArea, CardContent, Container, FormControl, FormControlLabel, FormLabel, Input, InputLabel, MenuItem, Radio, RadioGroup, Select, TextField } from '@mui/material';
 import React from 'react'
 import Swal from 'sweetalert2';
 
 function AddProduct({ sendProdLoad }) {
     const [product, setProduct] = React.useState('');
     const [category, setCategory] = React.useState('');
-    const [quantity, setQuantity] = React.useState('');
+    const [quantity, setQuantity] = React.useState(0);
     const [measure, setMeasure] = React.useState('kg');
     const [id, setId] = React.useState(0)
 
@@ -18,7 +18,10 @@ function AddProduct({ sendProdLoad }) {
     }
 
     const handleChangeQuantity = (e) => {
-        setQuantity(e.target.value);
+        const inputValue = parseInt(e.target.value, 10); 
+        if (!isNaN(inputValue) && inputValue >= 0 && inputValue <= 1000) {
+            setQuantity(inputValue);
+        }
     }
 
     const handleChangeMeasure = (e) => {
@@ -26,7 +29,7 @@ function AddProduct({ sendProdLoad }) {
     }
 
     const addProductTable = () => {
-        if (product === '' || category === '') {
+        if (product === '' || category === '' || quantity === '' || measure === '') {
             console.log(product);
             Swal.fire(
                 'Todos los campos deben estar completos!'
@@ -36,13 +39,15 @@ function AddProduct({ sendProdLoad }) {
         const newProduct = {
             id,
             product,
+            quantity,
+            measure,
             category,
         };
         sendProdLoad(newProduct);
         console.log(newProduct);
         setProduct('');
         setCategory('');
-        setQuantity('');
+        setQuantity(0);
         setMeasure("kg")
         setId(id + 1);
     }
@@ -54,13 +59,14 @@ function AddProduct({ sendProdLoad }) {
                     <CardContent>
                         <Box sx={{ width: "80%" }}>
                             <Input placeholder='Producto' type="text" value={product} onChange={handleChangeProd} />
-                            <Input placeholder='Cantidad' type="number" value={quantity} onChange={handleChangeQuantity} />
-                            <FormControl sx={{ minWidth: 231, marginTop: 1 }}>
+                            <FormLabel sx={{ marginTop: 1 }}>Cantidad</FormLabel>
+                            <Input type="interger" value={quantity} onChange={handleChangeQuantity} />
+                            <FormControl sx={{ minWidth: 240, marginTop: 1 }}>
                                 <FormLabel id="demo-row-radio-buttons-group-label">Medida</FormLabel>
                                 <RadioGroup value={measure} onChange={handleChangeMeasure} row aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group">
                                     <FormControlLabel value="kg" control={<Radio color="success" />} label="Kg" />
                                     <FormControlLabel value="gr" control={<Radio color="success" />} label="Gr" />
-                                    <FormControlLabel value="unidad" control={<Radio color="success" />} label="Unidad" />
+                                    <FormControlLabel value="paquete" control={<Radio color="success" />} label="Paquete" />
                                 </RadioGroup>
                             </FormControl>
                             <FormControl fullWidth>

@@ -4,14 +4,11 @@ import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, Tab
 function TableProducts({ category, products }) {
     const prodLeaked = products.filter((prod) => prod.category === category);
 
-    console.log("Medida", products.measure);
-    console.log("cantidad", products.quantity);
-
     return (
         <div>
             <Box>
-                <TableContainer component={Paper}>
-                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                <TableContainer component={Paper} sx={{alignItems: "center", width: "50%"}}>
+                    <Table aria-label="simple table">
                         <TableHead>
                             <TableRow>
                                 <TableCell align="center">ID</TableCell>
@@ -24,7 +21,10 @@ function TableProducts({ category, products }) {
                                 <TableRow key={prod.id} >
                                     <TableCell align="center">{prod.id}</TableCell>
                                     <TableCell align="center">{prod.product}</TableCell>
-                                    <TableCell align="center">{prod.quantity + prod.measure}</TableCell>
+                                    {prod.quantity <= 1 ?
+                                        <TableCell align="center">{prod.quantity + " " + prod.measure}</TableCell>
+                                    : <TableCell align="center">{prod.quantity + " " + prod.measure + "s"}</TableCell>
+                                    }
                                 </TableRow>
                             ))}
                         </TableBody>
