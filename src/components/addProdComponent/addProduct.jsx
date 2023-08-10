@@ -1,5 +1,8 @@
-import { Box, Button, Card, CardActionArea, CardContent, Container, FormControl, FormControlLabel, FormLabel, Input, InputLabel, MenuItem, Radio, RadioGroup, Select, TextField } from '@mui/material';
-import React from 'react'
+import {
+    Box, Button, Card, CardActionArea, CardContent, Container, FormControl, FormControlLabel,
+    FormLabel, Input, InputLabel, MenuItem, Radio, RadioGroup, Select
+} from '@mui/material';
+import React from 'react';
 import Swal from 'sweetalert2';
 
 function AddProduct({ sendProdLoad }) {
@@ -18,7 +21,7 @@ function AddProduct({ sendProdLoad }) {
     }
 
     const handleChangeQuantity = (e) => {
-        const inputValue = parseInt(e.target.value, 10); 
+        const inputValue = parseInt(e.target.value, 10);
         if (!isNaN(inputValue) && inputValue >= 0 && inputValue <= 1000) {
             setQuantity(inputValue);
         }
@@ -44,7 +47,6 @@ function AddProduct({ sendProdLoad }) {
             category,
         };
         sendProdLoad(newProduct);
-        console.log(newProduct);
         setProduct('');
         setCategory('');
         setQuantity(0);

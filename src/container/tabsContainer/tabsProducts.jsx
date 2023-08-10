@@ -1,5 +1,5 @@
 import { Box, Tab, Tabs } from '@mui/material';
-import React from 'react'
+import React from 'react';
 import TableProducts from '../../components/tableProdComponent/tableProducts';
 
 

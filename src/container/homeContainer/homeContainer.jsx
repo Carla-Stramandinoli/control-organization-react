@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import AddProduct from '../../components/addProdComponent/addProduct';
 import TabsProducts from '../tabsContainer/tabsProducts';
 
