@@ -5,7 +5,7 @@ import {
 } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
-function TableProducts({ category, products }) {
+function TableProducts({ category, products, deleteElement }) {
     const prodFilter = products.filter((prod) => prod.category === category);
 
     return (
@@ -30,7 +30,7 @@ function TableProducts({ category, products }) {
                                             : <TableCell align="center">{prod.quantity + " " + prod.measure + "s"}</TableCell>
                                         }
                                         <TableCell align="center">
-                                            <Button sx={{ color: 'black' }}>
+                                            <Button onClick={() => deleteElement(prod.id)} sx={{ color: 'black' }}>
                                                 <DeleteOutlineIcon />
                                             </Button>
                                         </TableCell>
@@ -44,7 +44,7 @@ function TableProducts({ category, products }) {
                                             : <TableCell align="center">{prod.quantity + " " + prod.measure + "s"}</TableCell>
                                         }
                                         <TableCell align="center">
-                                            <Button sx={{ color: 'black' }}>
+                                            <Button onClick={() => deleteElement(prod.id)} sx={{ color: 'black' }}>
                                                 <DeleteOutlineIcon />
                                             </Button>
                                         </TableCell>

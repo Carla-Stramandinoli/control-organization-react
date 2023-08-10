@@ -17,10 +17,16 @@ function HomeContainer() {
         setProducts([...products, newProduct]);
     }
 
+    const deleteElement = (id) => {
+        const deleteElement = products.filter((prod) => prod.id !== id);
+        setProducts(deleteElement)
+        console.log(deleteElement);
+    }
+
     return (
         <div>
             <AddProduct sendProdLoad={handleSendData} />
-            <TabsProducts  categories={categories} products={products} />
+            <TabsProducts  categories={categories} products={products} deleteElement={deleteElement} />
         </div>
     )
 }

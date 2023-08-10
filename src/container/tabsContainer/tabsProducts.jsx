@@ -3,13 +3,15 @@ import React from 'react';
 import TableProducts from '../../components/tableProdComponent/tableProducts';
 
 
-function TabsProducts({ categories, products }) {
+function TabsProducts({ categories, products, deleteElement }) {
   const [value, setValue] = React.useState(0);
   console.log('TabsProducts value', value);
 
   const handleChange = (_, newValue) => {
     setValue(newValue);
   };
+
+
 
   return (
     <div>
@@ -22,7 +24,7 @@ function TabsProducts({ categories, products }) {
           </Tabs>
         </Box>
         <div>
-          <TableProducts category={value} products={products} />
+          <TableProducts category={value} products={products} deleteElement={deleteElement}/>
         </div>
       </Box>
 
