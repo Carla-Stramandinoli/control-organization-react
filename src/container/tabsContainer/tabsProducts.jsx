@@ -27,7 +27,6 @@ function TabsProducts({ categories, products, deleteElement }) {
           <TableProducts category={value} products={products} deleteElement={deleteElement}/>
         </div>
       </Box>
-
     </div>
   )
 }

@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import {
     Box, Button, Card, CardActionArea, CardContent, Container, FormControl, FormControlLabel,
     FormLabel, Input, InputLabel, MenuItem, Radio, RadioGroup, Select
@@ -56,12 +57,12 @@ function AddProduct({ sendProdLoad }) {
 
     return (
         <Container>
-            <Card sx={{ width: '70%', maxWidth: '24%', padding: '2%', marginTop: '7%', marginLeft: '35%' }}>
+            <CustomCard >
                 <CardActionArea>
                     <CardContent>
                         <Box sx={{ width: "80%" }}>
                             <Input placeholder='Producto' type="text" value={product} onChange={handleChangeProd} />
-                            <FormLabel sx={{ marginTop: 1 }}>Cantidad</FormLabel>
+                            <FormLabel sx={{ margin: 1 }}>Cantidad</FormLabel>
                             <Input type="interger" value={quantity} onChange={handleChangeQuantity} />
                             <FormControl sx={{ minWidth: 240, marginTop: 1 }}>
                                 <FormLabel id="demo-row-radio-buttons-group-label">Medida</FormLabel>
@@ -71,7 +72,7 @@ function AddProduct({ sendProdLoad }) {
                                     <FormControlLabel value="paquete" control={<Radio color="success" />} label="Paquete" />
                                 </RadioGroup>
                             </FormControl>
-                            <FormControl fullWidth>
+                            <FormControl sx={{ width: "54%"}} fullWidth>
                                 <InputLabel sx={{ top: "8px" }} id="demo-simple-select-label">Categoria</InputLabel>
                                 <Select
                                     value={category}
@@ -83,14 +84,37 @@ function AddProduct({ sendProdLoad }) {
                                     <MenuItem value={3}>Otros</MenuItem>
                                 </Select>
                             </FormControl>
-                            <Button onClick={addProductTable}>Agregar producto</Button>
+                            <CustomButtonAdd onClick={addProductTable}>Agregar producto</CustomButtonAdd>
                         </Box>
                     </CardContent>
                 </CardActionArea>
-            </Card>
+            </CustomCard>
         </Container>
     )
 }
 
 export default AddProduct;
 
+const CustomButtonAdd = styled(Button)({
+    backgroundColor: '#037171',
+    color: 'white',
+    padding: '10px',
+    margin: '6px',
+    border: '1px solid black',
+    borderRadius: '8px',
+    fontSize: '14px',
+    '&:hover': {
+        backgroundColor: '#54B6B6',
+    },
+});
+
+const CustomCard = styled(Card)({
+    padding: '2px',
+    margin: '6px',
+    border: '2px solid black',
+    borderRadius: '8px',
+    fontSize: '10px',
+    maxWidth: '48%',
+    marginTop: '7%',
+    marginLeft: '26%',
+});

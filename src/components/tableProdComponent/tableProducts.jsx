@@ -11,7 +11,7 @@ function TableProducts({ category, products, deleteElement }) {
     return (
         <div>
             <Box>
-                <TableContainer component={Paper} sx={{ alignItems: "center", width: "50%" }}>
+                <TableContainer component={Paper} sx={{ width: "50%" }}>
                     <Table aria-label="simple table">
                         <TableHead>
                             <TableRow>
