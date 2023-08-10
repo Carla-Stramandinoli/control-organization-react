@@ -61,9 +61,11 @@ function AddProduct({ sendProdLoad }) {
                 <CardActionArea>
                     <CardContent>
                         <Box sx={{ width: "80%" }}>
-                            <Input placeholder='Producto' type="text" value={product} onChange={handleChangeProd} />
-                            <FormLabel sx={{ margin: 1 }}>Cantidad</FormLabel>
-                            <Input type="interger" value={quantity} onChange={handleChangeQuantity} />
+                            <Box>
+                                <Input placeholder='Producto' type="text" value={product} onChange={handleChangeProd} />
+                                <FormLabel>Cantidad</FormLabel>
+                                <Input type="interger" value={quantity} onChange={handleChangeQuantity} />
+                            </Box>
                             <FormControl sx={{ minWidth: 240, marginTop: 1 }}>
                                 <FormLabel id="demo-row-radio-buttons-group-label">Medida</FormLabel>
                                 <RadioGroup value={measure} onChange={handleChangeMeasure} row aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group">
@@ -72,7 +74,7 @@ function AddProduct({ sendProdLoad }) {
                                     <FormControlLabel value="paquete" control={<Radio color="success" />} label="Paquete" />
                                 </RadioGroup>
                             </FormControl>
-                            <FormControl sx={{ width: "54%"}} fullWidth>
+                            <FormControl sx={{ width: "64%" }} fullWidth>
                                 <InputLabel sx={{ top: "8px" }} id="demo-simple-select-label">Categoria</InputLabel>
                                 <Select
                                     value={category}
@@ -114,7 +116,7 @@ const CustomCard = styled(Card)({
     border: '2px solid black',
     borderRadius: '8px',
     fontSize: '10px',
-    maxWidth: '48%',
+    maxWidth: '24%',
     marginTop: '7%',
-    marginLeft: '26%',
+    marginLeft: '36%',
 });
