@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import {
-    Box, Button, Card, CardActionArea, CardContent, Container, FormControl, FormControlLabel,
+    Button, Card, CardActionArea, CardContent, Container, FormControl, FormControlLabel,
     FormLabel, Grid, Input, InputLabel, MenuItem, Radio, RadioGroup, Select
 } from '@mui/material';
 import React from 'react';
@@ -67,9 +67,9 @@ function AddProduct({ sendProdLoad }) {
                                 <FormLabel>Cantidad</FormLabel>
                                 <Input type="interger" value={quantity} onChange={handleChangeQuantity} />
                             </Grid>
-                            <FormControl style={gridStyle} sx={{ minWidth: 240, marginTop: 1 }}>
-                                <FormLabel id="demo-row-radio-buttons-group-label">Medida</FormLabel>
-                                <RadioGroup style={gridStyle} value={measure} onChange={handleChangeMeasure} row aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group">
+                            <FormControl style={gridStyle} sx={{ minWidth: 225, marginTop: 1 }}>
+                                <FormLabel>Medida</FormLabel>
+                                <RadioGroup style={gridStyle} value={measure} onChange={handleChangeMeasure} row>
                                     <FormControlLabel value="kg" control={<Radio color="success" />} label="Kg" />
                                     <FormControlLabel value="grs" control={<Radio color="success" />} label="Grs" />
                                     <FormControlLabel value="paquete" control={<Radio color="success" />} label="Paquete" />

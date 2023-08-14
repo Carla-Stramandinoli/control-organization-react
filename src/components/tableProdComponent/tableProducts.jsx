@@ -66,5 +66,4 @@ const styleGrid = {
     justifyContent:"center",
     alignItems:"center",
     paddingTop: 20,
-    borderColor: 'black'
 }
