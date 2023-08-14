@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Box, Button, Paper, Table, TableBody, TableCell,
+    Button, Container, Grid, Paper, Table, TableBody, TableCell,
     TableContainer, TableHead, TableRow
 } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
@@ -9,9 +9,9 @@ function TableProducts({ category, products, deleteElement }) {
     const prodFilter = products.filter((prod) => prod.category === category);
 
     return (
-        <div>
-            <Box>
-                <TableContainer component={Paper} sx={{ width: "50%" }}>
+        <Container>
+            <Grid container style={styleGrid}>
+                <TableContainer component={Paper} sx={{ width: "70%" }}>
                     <Table aria-label="simple table">
                         <TableHead>
                             <TableRow>
@@ -54,9 +54,17 @@ function TableProducts({ category, products, deleteElement }) {
                         </TableBody>
                     </Table>
                 </TableContainer>
-            </Box>
-        </div>
+            </Grid>
+        </Container>
     )
 }
 
 export default TableProducts;
+
+const styleGrid = {
+    direction:"row",
+    justifyContent:"center",
+    alignItems:"center",
+    paddingTop: 20,
+    borderColor: 'black'
+}

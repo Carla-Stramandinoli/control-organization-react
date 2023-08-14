@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import {
     Box, Button, Card, CardActionArea, CardContent, Container, FormControl, FormControlLabel,
-    FormLabel, Input, InputLabel, MenuItem, Radio, RadioGroup, Select
+    FormLabel, Grid, Input, InputLabel, MenuItem, Radio, RadioGroup, Select
 } from '@mui/material';
 import React from 'react';
 import Swal from 'sweetalert2';
@@ -57,41 +57,47 @@ function AddProduct({ sendProdLoad }) {
 
     return (
         <Container>
-            <CustomCard >
+            <CustomCard>
                 <CardActionArea>
                     <CardContent>
-                        <Box sx={{ width: "80%" }}>
-                            <Box>
+                        <Grid>
+                            <Grid container item xs={12} style={gridStyle}>
+                                <FormLabel>Producto</FormLabel>
                                 <Input placeholder='Producto' type="text" value={product} onChange={handleChangeProd} />
                                 <FormLabel>Cantidad</FormLabel>
                                 <Input type="interger" value={quantity} onChange={handleChangeQuantity} />
-                            </Box>
-                            <FormControl sx={{ minWidth: 240, marginTop: 1 }}>
+                            </Grid>
+                            <FormControl style={gridStyle} sx={{ minWidth: 240, marginTop: 1 }}>
                                 <FormLabel id="demo-row-radio-buttons-group-label">Medida</FormLabel>
-                                <RadioGroup value={measure} onChange={handleChangeMeasure} row aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group">
+                                <RadioGroup style={gridStyle} value={measure} onChange={handleChangeMeasure} row aria-labelledby="demo-row-radio-buttons-group-label" name="row-radio-buttons-group">
                                     <FormControlLabel value="kg" control={<Radio color="success" />} label="Kg" />
-                                    <FormControlLabel value="gr" control={<Radio color="success" />} label="Gr" />
+                                    <FormControlLabel value="grs" control={<Radio color="success" />} label="Grs" />
                                     <FormControlLabel value="paquete" control={<Radio color="success" />} label="Paquete" />
+                                    <FormControlLabel value="unidad" control={<Radio color="success" />} label="Unidad" />
                                 </RadioGroup>
                             </FormControl>
-                            <FormControl sx={{ width: "64%" }} fullWidth>
-                                <InputLabel sx={{ top: "8px" }} id="demo-simple-select-label">Categoria</InputLabel>
-                                <Select
-                                    value={category}
-                                    onChange={handleChangeCat}
-                                    sx={{ marginTop: 1 }}
-                                >
-                                    <MenuItem value={1}>Verduleria</MenuItem>
-                                    <MenuItem value={2}>Supermercado</MenuItem>
-                                    <MenuItem value={3}>Otros</MenuItem>
-                                </Select>
-                            </FormControl>
-                            <CustomButtonAdd onClick={addProductTable}>Agregar producto</CustomButtonAdd>
-                        </Box>
+                            <Grid container item xs={12} style={gridStyle}>
+                                <FormControl sx={{ width: "64%" }} fullWidth>
+                                    <InputLabel sx={{ top: "8px" }} id="demo-simple-select-label">Categoria</InputLabel>
+                                    <Select
+                                        value={category}
+                                        onChange={handleChangeCat}
+                                        sx={{ marginTop: 1 }}
+                                    >
+                                        <MenuItem value={1}>Verduleria</MenuItem>
+                                        <MenuItem value={2}>Supermercado</MenuItem>
+                                        <MenuItem value={3}>Otros</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Grid>
+                            <Grid container item xs={12} style={gridStyle}>
+                                <CustomButtonAdd onClick={addProductTable}>Agregar producto</CustomButtonAdd>
+                            </Grid>
+                        </Grid>
                     </CardContent>
                 </CardActionArea>
             </CustomCard>
-        </Container>
+        </Container >
     )
 }
 
@@ -107,16 +113,20 @@ const CustomButtonAdd = styled(Button)({
     fontSize: '14px',
     '&:hover': {
         backgroundColor: '#54B6B6',
-    },
+    }
 });
 
 const CustomCard = styled(Card)({
-    padding: '2px',
     margin: '6px',
     border: '2px solid black',
     borderRadius: '8px',
-    fontSize: '10px',
-    maxWidth: '24%',
+    maxWidth: '23%',
     marginTop: '7%',
-    marginLeft: '36%',
+    marginLeft: '40%',
 });
+
+const gridStyle = {
+    direction: "row",
+    justifyContent: "center",
+    alignItems: "center",
+}
