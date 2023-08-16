@@ -59,7 +59,7 @@ function AddProduct({ sendProdLoad }) {
         <Container>
             <CustomCard>
                 <CardActionArea>
-                    <CardContent>
+                    <CardContent sx={{ padding: '17px' }}>
                         <Grid>
                             <Grid container item xs={12} style={gridStyle}>
                                 <FormLabel>Producto</FormLabel>

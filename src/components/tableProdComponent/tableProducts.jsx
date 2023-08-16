@@ -21,35 +21,38 @@ function TableProducts({ category, products, deleteElement }) {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {category === 0 ?
-                                products.map((prod) => (
-                                    <TableRow key={prod.id} >
-                                        <TableCell align="center">{prod.product}</TableCell>
-                                        {prod.quantity <= 1 ?
-                                            <TableCell align="center">{prod.quantity + " " + prod.measure}</TableCell>
-                                            : <TableCell align="center">{prod.quantity + " " + prod.measure + "s"}</TableCell>
-                                        }
-                                        <TableCell align="center">
-                                            <Button onClick={() => deleteElement(prod.id)} sx={{ color: 'black' }}>
-                                                <DeleteOutlineIcon />
-                                            </Button>
-                                        </TableCell>
-                                    </TableRow>
-                                )) :
-                                prodFilter.map((prod) => (
-                                    <TableRow key={prod.id} >
-                                        <TableCell align="center">{prod.product}</TableCell>
-                                        {prod.quantity <= 1 ?
-                                            <TableCell align="center">{prod.quantity + " " + prod.measure}</TableCell>
-                                            : <TableCell align="center">{prod.quantity + " " + prod.measure + "s"}</TableCell>
-                                        }
-                                        <TableCell align="center">
-                                            <Button onClick={() => deleteElement(prod.id)} sx={{ color: 'black' }}>
-                                                <DeleteOutlineIcon />
-                                            </Button>
-                                        </TableCell>
-                                    </TableRow>
-                                ))
+                            {
+                                category === 0 ?
+                                    products.map((prod) => (
+                                        <TableRow key={prod.id} >
+                                            <TableCell align="center">{prod.product}</TableCell>
+                                            {
+                                                prod.quantity <= 1 ?
+                                                    <TableCell align="center">{prod.quantity + " " + prod.measure}</TableCell>
+                                                    : <TableCell align="center">{prod.quantity + " " + prod.measure + "s"}</TableCell>
+                                            }
+                                            <TableCell align="center">
+                                                <Button onClick={() => deleteElement(prod.id)} sx={{ color: 'black' }}>
+                                                    <DeleteOutlineIcon />
+                                                </Button>
+                                            </TableCell>
+                                        </TableRow>
+                                    )) :
+                                    prodFilter.map((prod) => (
+                                        <TableRow key={prod.id} >
+                                            <TableCell align="center">{prod.product}</TableCell>
+                                            {
+                                                prod.quantity <= 1 ?
+                                                    <TableCell align="center">{prod.quantity + " " + prod.measure}</TableCell>
+                                                    : <TableCell align="center">{prod.quantity + " " + prod.measure + "s"}</TableCell>
+                                            }
+                                            <TableCell align="center">
+                                                <Button onClick={() => deleteElement(prod.id)} sx={{ color: 'black' }}>
+                                                    <DeleteOutlineIcon />
+                                                </Button>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))
                             }
                         </TableBody>
                     </Table>
@@ -62,8 +65,8 @@ function TableProducts({ category, products, deleteElement }) {
 export default TableProducts;
 
 const styleGrid = {
-    direction:"row",
-    justifyContent:"center",
-    alignItems:"center",
+    direction: "row",
+    justifyContent: "center",
+    alignItems: "center",
     paddingTop: 20,
 }
