@@ -19,9 +19,7 @@ function HomeContainer() {
   // var carloncha = 'te amo';
 
   return (
-    <Container maxWidth="lg" sx={{ marginTop: "15%" }}>
-      <h1>Aca hacer la pagina home </h1>
-
+    <Container maxWidth="lg" sx={{ marginTop: "17%" }}>
       <Grid container spacing={2}>
         <Grid item xs={4}>
           <Link to={"/compras"} style={{ textDecoration: "none" }}>

@@ -18,7 +18,7 @@ function TabsProducts({ categories, products, deleteElement }) {
             value={value}
             onChange={handleChange}
             aria-label="basic tabs example"
-          >
+            >
             {categories.map((prod, index) => {
               return <Tab key={prod.id + index} label={prod.title} style={{ color: "#9E768F" }} />;
             })}
