@@ -1,6 +1,7 @@
 import React from "react";
 import TabsProducts from "../tabsContainer/tabsProducts";
 import AddProduct from "../../components/addProdComponent/addProduct";
+import NavBar from "../../components/navBarComponent/navBar";
 
 const categories = [
   { id: "all", title: "todos" },
@@ -23,6 +24,7 @@ function ListSuper() {
   };
   return (
     <div>
+      <NavBar />
       <AddProduct sendProdLoad={handleSendData} />
       <TabsProducts
         categories={categories}

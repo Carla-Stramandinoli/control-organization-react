@@ -157,7 +157,7 @@ function AddProduct({ sendProdLoad }) {
 export default AddProduct;
 
 const CustomButtonAdd = styled(Button)({
-  backgroundColor: "#037171",
+  backgroundColor: "#AC8085",
   color: "white",
   padding: "10px",
   margin: "6px",
@@ -165,7 +165,7 @@ const CustomButtonAdd = styled(Button)({
   borderRadius: "8px",
   fontSize: "14px",
   "&:hover": {
-    backgroundColor: "#54B6B6",
+    backgroundColor: "#B98A7A",
   },
 });
 
