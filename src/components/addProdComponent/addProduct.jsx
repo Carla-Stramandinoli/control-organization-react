@@ -105,22 +105,22 @@ function AddProduct({ sendProdLoad }) {
                 >
                   <FormControlLabel
                     value="kg"
-                    control={<Radio color="success" />}
+                    control={<Radio style={{color:"#9E768F"}} />}
                     label="Kg"
                   />
                   <FormControlLabel
                     value="grs"
-                    control={<Radio color="success" />}
+                    control={<Radio style={{color:"#9E768F"}} />}
                     label="Grs"
                   />
                   <FormControlLabel
                     value="paquete"
-                    control={<Radio color="success" />}
+                    control={<Radio style={{color:"#9E768F"}} />}
                     label="Paquete"
                   />
                   <FormControlLabel
                     value="unidad"
-                    control={<Radio color="success" />}
+                    control={<Radio style={{color:"#9E768F"}} />}
                     label="Unidad"
                   />
                 </RadioGroup>
@@ -174,7 +174,7 @@ const CustomCard = styled(Card)({
   border: "2px solid black",
   borderRadius: "8px",
   maxWidth: "23%",
-  marginTop: "7%",
+  marginTop: "2%",
   marginLeft: "40%",
 });
 

@@ -2,7 +2,6 @@ import React from "react";
 import {
   AppBar,
   Box,
-  Button,
   IconButton,
   Menu,
   MenuItem,
@@ -53,18 +52,21 @@ function NavBar() {
               horizontal: "left",
             }}
           >
-            <Link to={"/compras"} style={{ textDecoration: "none" }}>
+            <Link to={"/compras"} style={{ textDecoration: "none", color: "#9E768F" }}>
               <MenuItem onClick={handleClose}>Compras</MenuItem>
             </Link>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
+            <Link to={"/gastos"} style={{ textDecoration: "none", color: "#9E768F" }}>
+              <MenuItem onClick={handleClose}>Gastos</MenuItem>
+            </Link>
+            <Link to={"/pendientes"} style={{ textDecoration: "none", color: "#9E768F" }}>
+              <MenuItem onClick={handleClose}>Pendientes</MenuItem>
+            </Link>
           </Menu>
           <Link to={"/"} style={{ textDecoration: "none", color: "white" }}>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Home
             </Typography>
           </Link>
-          <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
     </Box>

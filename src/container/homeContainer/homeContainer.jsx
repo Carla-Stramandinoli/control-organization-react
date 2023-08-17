@@ -29,10 +29,14 @@ function HomeContainer() {
           </Link>
         </Grid>
         <Grid item xs={4}>
-          <Item>GASTOS</Item>
+          <Link to={"/gastos"} style={{ textDecoration: "none" }}>
+            <Item>GASTOS</Item>
+          </Link>
         </Grid>
         <Grid item xs={4}>
-          <Item>PENDIENTES</Item>
+          <Link to={"/pendientes"} style={{ textDecoration: "none" }}>
+            <Item>PENDIENTES</Item>
+          </Link>
         </Grid>
       </Grid>
     </Container>
