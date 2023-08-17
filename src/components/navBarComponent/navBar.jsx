@@ -45,13 +45,13 @@ function NavBar() {
                             horizontal: 'left',
                         }}
                     >
-                        <Link to={"/compras"}>
+                        <Link to={"/compras"} style={{ textDecoration: 'none' }}>
                             <MenuItem onClick={handleClose}>Compras</MenuItem>
                         </Link>
                         <MenuItem onClick={handleClose}>My account</MenuItem>
                         <MenuItem onClick={handleClose}>Logout</MenuItem>
                     </Menu>
-                    <Link to={"/"}>
+                    <Link to={"/"} style={{ textDecoration: 'none', color: 'white' }}>
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                             Home
                         </Typography>
@@ -59,7 +59,7 @@ function NavBar() {
                     <Button color="inherit">Login</Button>
                 </Toolbar>
             </AppBar>
-        </Box >
+        </Box>
     )
 }
 
