@@ -22,9 +22,9 @@ function TableProducts({ category, products, deleteElement }) {
         <TableContainer component={Paper} sx={{ width: "70%" }}>
           <Table aria-label="simple table">
             <TableHead>
-              <TableRow>
-                <TableCell align="center">Producto</TableCell>
-                <TableCell align="center">Cantidad</TableCell>
+              <TableRow sx={{backgroundColor: '#B98A7A'}}>
+                <TableCell align="center" style={styleTiTable}>Producto</TableCell>
+                <TableCell align="center" style={styleTiTable}>Cantidad</TableCell>
                 <TableCell align="center"></TableCell>
               </TableRow>
             </TableHead>
@@ -89,4 +89,9 @@ const styleGrid = {
   justifyContent: "center",
   alignItems: "center",
   paddingTop: 20,
-};
+} 
+
+const styleTiTable = {
+  color: 'white',
+  fontSize: '20px'
+}

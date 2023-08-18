@@ -171,7 +171,7 @@ const CustomButtonAdd = styled(Button)({
 
 const CustomCard = styled(Card)({
   margin: "6px",
-  border: "2px solid black",
+  border: "2px solid rosybrown",
   borderRadius: "8px",
   maxWidth: "23%",
   marginTop: "2%",
