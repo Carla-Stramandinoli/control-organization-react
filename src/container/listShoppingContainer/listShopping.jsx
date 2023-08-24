@@ -3,14 +3,14 @@ import TabsProducts from "../tabsContainer/tabsProducts";
 import AddProduct from "../../components/addProdComponent/addProduct";
 import NavBar from "../../components/navBarComponent/navBar";
 
-const categories = [
+const categoriesShopping = [
   { id: "all", title: "todos" },
   { id: "greengrocery", title: "verduleria" },
   { id: "supermarket", title: "supermercado" },
   { id: "others", title: "otros" },
 ];
 
-function ListSuper() {
+function ListShopping() {
   const [products, setProducts] = React.useState([]);
 
   const handleSendData = (newProduct) => {
@@ -27,12 +27,12 @@ function ListSuper() {
       <NavBar />
       <AddProduct sendProdLoad={handleSendData} />
       <TabsProducts
-        categories={categories}
-        products={products}
+        categories={categoriesShopping}
+        itemList={products}
         deleteElement={deleteElement}
       />
     </div>
   );
 }
 
-export default ListSuper;
+export default ListShopping;

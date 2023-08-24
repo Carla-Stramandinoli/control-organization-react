@@ -2,13 +2,13 @@ import { Box, Tab, Tabs } from "@mui/material";
 import React from "react";
 import TableProducts from "../../components/tableProdComponent/tableProducts";
 
-function TabsProducts({ categories, products, deleteElement }) {
+function TabsProducts({ categories, itemList, deleteElement }) {
   const [value, setValue] = React.useState(0);
-  console.log("TabsProducts value", value);
 
   const handleChange = (_, newValue) => {
     setValue(newValue);
   };
+
 
   return (
     <div>
@@ -32,7 +32,7 @@ function TabsProducts({ categories, products, deleteElement }) {
         <div>
           <TableProducts
             category={value}
-            products={products}
+            products={itemList}
             deleteElement={deleteElement}
           />
         </div>

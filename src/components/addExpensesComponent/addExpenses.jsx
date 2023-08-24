@@ -45,21 +45,20 @@ function AddExpenses() {
   return (
     <Container>
       <CustomCard>
-        <Grid p={1} >
+        <Grid p={1}>
           <FormLabel>Descripcion del gasto:</FormLabel>
           <Input
             type="text"
             value={expense}
             onChange={handleExpense}
           />
-          <FormLabel>Precio:</FormLabel>
+          <FormLabel>Precio: $</FormLabel>
           <Input
             type="number"
             value={price}
             onChange={handlePrice}
           />
         </Grid>
-
         <Grid container item xs={12} sx={{ justifyContent: "center" }} p={1}>
           <CustomButtonAdd onClick={addExpense}>Agregar</CustomButtonAdd>
         </Grid>
@@ -75,7 +74,7 @@ const CustomCard = styled(Card)({
   borderRadius: "8px",
   maxWidth: "50%",
   marginTop: "2%",
-  marginLeft: "22%",
+  marginLeft: "24%",
   padding: "8px",
 });
 
