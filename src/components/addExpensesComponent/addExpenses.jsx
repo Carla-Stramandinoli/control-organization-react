@@ -10,7 +10,7 @@ import {
 import React from "react";
 import Swal from "sweetalert2";
 
-function AddExpenses() {
+function AddExpenses({ sendExpenseLoad }) {
   const [expense, setExpense] = React.useState("");
   const [price, setPrice] = React.useState(0);
 
@@ -20,7 +20,7 @@ function AddExpenses() {
 
   const handlePrice = (e) => {
     const inputValue = parseInt(e.target.value, 10);
-    if (!isNaN(inputValue) && inputValue >= 0 && inputValue <= 1000) {
+    if (!isNaN(inputValue) && inputValue >= 0) {
       setPrice(inputValue);
     }
   };
@@ -33,14 +33,14 @@ function AddExpenses() {
       Swal.fire("Todos los campos deben estar completos!");
       return;
     }
-    const newProduct = {
+    const newExpense = {
       expense,
       price,
     };
-    // sendProdLoad(newProduct);
+    sendExpenseLoad(newExpense);
     setExpense("");
     setPrice(0);
-    console.log(newProduct);
+    console.log(newExpense);
   };
   return (
     <Container>

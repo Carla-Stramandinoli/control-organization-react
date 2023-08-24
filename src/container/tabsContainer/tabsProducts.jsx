@@ -1,6 +1,6 @@
-import { Box, Tab, Tabs } from "@mui/material";
-import React from "react";
-import TableProducts from "../../components/tableProdComponent/tableProducts";
+import { Box, Tab, Tabs } from "@mui/material"
+import React from "react"
+import TableProducts from "../../components/tableProdComponent/tableProducts"
 
 function TabsProducts({ categories, itemList, deleteElement }) {
   const [value, setValue] = React.useState(0);
@@ -25,7 +25,7 @@ function TabsProducts({ categories, itemList, deleteElement }) {
             }}
             >
             {categories.map((prod, index) => {
-              return <Tab key={prod.id + index} label={prod.title} style={{ color: "#9E768F" }} />;
+              return <Tab key={prod.id + index} label={prod.title} style={{ color: "#9E768F" }} />
             })}
           </Tabs>
         </Box>

@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import {
   Button,
   Container,
@@ -10,8 +10,8 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-} from "@mui/material";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+} from "@mui/material"
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline"
 
 function TableProducts({ category, products, deleteElement }) {
   const prodFilter = products.filter((prod) => prod.category === category);
