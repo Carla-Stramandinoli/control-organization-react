@@ -9,7 +9,6 @@ function TabsProducts({ categories, itemList, deleteElement }) {
     setValue(newValue);
   };
 
-
   return (
     <div>
       <Box sx={{ width: "100%" }}>
@@ -23,7 +22,7 @@ function TabsProducts({ categories, itemList, deleteElement }) {
                 backgroundColor: "#9E768F"
               }
             }}
-            >
+          >
             {categories.map((prod, index) => {
               return <Tab key={prod.id + index} label={prod.title} style={{ color: "#9E768F" }} />
             })}

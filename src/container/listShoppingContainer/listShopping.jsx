@@ -20,8 +20,8 @@ function ListShopping() {
   const deleteElement = (id) => {
     const deleteElement = products.filter((prod) => prod.id !== id);
     setProducts(deleteElement);
-    console.log(deleteElement);
   };
+  
   return (
     <div>
       <NavBar />
