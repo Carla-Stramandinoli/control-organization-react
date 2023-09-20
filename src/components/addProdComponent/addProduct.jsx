@@ -166,7 +166,7 @@ const CustomButtonAdd = styled(Button)({
   fontSize: "14px",
   "&:hover": {
     backgroundColor: "#B98A7A",
-  },
+  }
 });
 
 const CustomCard = styled(Card)({

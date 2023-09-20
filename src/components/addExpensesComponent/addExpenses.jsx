@@ -69,7 +69,7 @@ function AddExpenses({ sendExpenseLoad }) {
             onChange={handlePrice}
           />
         </Grid>
-        <Grid container item xs={12}>
+        <Grid container item xs={12} sx={{ justifyContent: "center" }}>
                 <FormControl sx={{ width: "64%" }} fullWidth>
                   <InputLabel sx={{ top: "8px" }} id="demo-simple-select-label">
                     Categoria
