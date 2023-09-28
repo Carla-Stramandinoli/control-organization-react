@@ -14,8 +14,11 @@ import {
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline"
 
 function TableProducts({ category, products, deleteElement }) {
-  const prodFilter = products.filter((prod) => prod.category === category);
-
+  const prodFilter =
+  category.id === "all"
+    ? products
+    : products.filter((prod) => prod.category === category.key);
+    
   return (
     <Container>
       <Grid container style={styleGrid}>

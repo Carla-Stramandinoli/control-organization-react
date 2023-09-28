@@ -3,6 +3,7 @@ import AddExpenses from '../../components/addExpensesComponent/addExpenses';
 import NavBar from '../../components/navBarComponent/navBar';
 import TabsProducts from '../tabsContainer/tabsProducts';
 
+
 const categoriesMonths = [
   { id: "january", title: "enero" },
   { id: "february", title: "febrero" },
@@ -20,16 +21,23 @@ const categoriesMonths = [
 
 function Expenses() {
   const [expenses, setExpenses] = React.useState([]);
+  const [selectedCategory, setSelectedCategory] = React.useState(categoriesMonths);
+
 
   const handleSendExpense = (newExpense) => {
     setExpenses([...expenses, newExpense]);
+  };
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    console.log(category)
   };
 
   return (
     <div>
       <NavBar />
       <AddExpenses sendExpenseLoad={handleSendExpense} />
-      <TabsProducts categories={categoriesMonths} itemList={expenses} />
+      <TabsProducts categories={categoriesMonths} onCategoryChange={handleCategoryChange} />
     </div>
   )
 }
