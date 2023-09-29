@@ -165,7 +165,7 @@ const CustomButtonAdd = styled(Button)({
   borderRadius: "8px",
   fontSize: "14px",
   "&:hover": {
-    backgroundColor: "#B98A7A",
+    backgroundColor: "#AC8085",
   }
 });
 

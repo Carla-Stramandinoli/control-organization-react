@@ -62,16 +62,17 @@ function AddExpenses({ sendExpenseLoad }) {
             value={expense}
             onChange={handleExpense}
           />
-          <FormLabel>Precio: $</FormLabel>
+          <FormLabel sx={{ top: "8px" }}>Precio: $</FormLabel>
           <Input
             type="number"
             value={price}
             onChange={handlePrice}
+            sx={{ top: "8px" }}
           />
         </Grid>
         <Grid container item xs={12} sx={{ justifyContent: "center" }}>
-                <FormControl sx={{ width: "64%" }} fullWidth>
-                  <InputLabel sx={{ top: "8px" }} id="demo-simple-select-label">
+                <FormControl sx={{ width: "40%", top: "10px" }} fullWidth>
+                  <InputLabel>
                     Categoria
                   </InputLabel>
                   <Select
@@ -107,10 +108,11 @@ export default AddExpenses;
 const CustomCard = styled(Card)({
   border: "2px solid rosybrown",
   borderRadius: "8px",
-  maxWidth: "50%",
+  maxWidth: "30%",
   marginTop: "2%",
-  marginLeft: "24%",
+  marginLeft: "34%",
   padding: "8px",
+  textAlign: "center"
 });
 
 const CustomButtonAdd = styled(Button)({
@@ -122,6 +124,6 @@ const CustomButtonAdd = styled(Button)({
   borderRadius: "8px",
   fontSize: "15px",
   "&:hover": {
-    backgroundColor: "#B98A7A",
+    backgroundColor: "#AC8085",
   },
 });
