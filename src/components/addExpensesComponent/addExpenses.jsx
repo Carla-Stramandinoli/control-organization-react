@@ -1,3 +1,7 @@
+//modificar que se borre el id correcto
+// modificar que cuando se agregue un producto se imprima a la primera vez
+// en todas las tabs, y no cuando se cambie de tabs. 
+
 import styled from "@emotion/styled";
 import {
   Button,
@@ -18,6 +22,7 @@ function AddExpenses({ sendExpenseLoad }) {
   const [expense, setExpense] = React.useState("");
   const [price, setPrice] = React.useState(0);
   const [months, setMonths] = React.useState("Enero");
+  const [id, setId] = React.useState(1);
 
   const handleExpense = (e) => {
     setExpense(e.target.value);
@@ -46,11 +51,17 @@ function AddExpenses({ sendExpenseLoad }) {
     const newExpense = {
       expense,
       price,
+      months,
+      id
     };
     sendExpenseLoad(newExpense);
     setExpense("");
     setPrice(0);
-    console.log(newExpense);
+    setMonths("");
+    if(id === 1 ){
+      setId(id);
+    }
+    setId( id + 1);
   };
   return (
     <Container>
@@ -73,7 +84,7 @@ function AddExpenses({ sendExpenseLoad }) {
         <Grid container item xs={12} sx={{ justifyContent: "center" }}>
                 <FormControl sx={{ width: "40%", top: "10px" }} fullWidth>
                   <InputLabel>
-                    Categoria
+                    Mes
                   </InputLabel>
                   <Select
                     value={months}

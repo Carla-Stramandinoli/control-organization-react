@@ -15,7 +15,7 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline"
 
 function TableProducts({ category, products, deleteElement }) {
   const prodFilter =
-  category.id === "all"
+  category.key === 0
     ? products
     : products.filter((prod) => prod.category === category.key);
     

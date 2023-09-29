@@ -1,3 +1,7 @@
+// modificar que cuando se agregue un producto se imprima a la primera vez
+// en todas las tabs, y no cuando se cambie de tabs. 
+
+
 import React from "react";
 import TabsProducts from "../tabsContainer/tabsProducts";
 import AddProduct from "../../components/addProdComponent/addProduct";
@@ -27,7 +31,6 @@ function ListShopping() {
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
-    console.log(category)
   };
 
   return (
