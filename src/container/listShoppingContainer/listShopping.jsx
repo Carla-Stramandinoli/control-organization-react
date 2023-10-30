@@ -25,8 +25,9 @@ function ListShopping() {
   };
 
   const deleteElement = (id) => {
-    const deleteElement = products.filter((prod) => prod.id !== id);
-    setProducts(deleteElement);
+    const updatedProducts = products.filter((prod) => prod.id !== id);
+    console.log(id);
+    setProducts(updatedProducts);
   };
 
   const handleCategoryChange = (category) => {

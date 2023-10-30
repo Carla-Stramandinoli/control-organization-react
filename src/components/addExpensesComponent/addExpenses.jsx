@@ -119,9 +119,9 @@ export default AddExpenses;
 const CustomCard = styled(Card)({
   border: "2px solid rosybrown",
   borderRadius: "8px",
-  maxWidth: "30%",
+  maxWidth: "33%",
   marginTop: "2%",
-  marginLeft: "34%",
+  marginLeft: "30%",
   padding: "8px",
   textAlign: "center"
 });
