@@ -15,7 +15,7 @@ const Item = styled(Paper)(({ theme }) => ({
   minHeight: "200%",
 }));
 
-function HomeContainer() {
+function MainContainer() {
   // var carloncha = 'te amo';
 
   return (
@@ -41,4 +41,4 @@ function HomeContainer() {
   );
 }
 
-export default HomeContainer;
+export default MainContainer;
