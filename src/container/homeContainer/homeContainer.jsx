@@ -1,12 +1,12 @@
 import React from 'react'
-import Login from './login';
-import MainContainer from '../../container/mainContainer/mainContainer';
+import Login from '../../components/homeComponent/login';
+import MainContainer from '../mainContainer/mainContainer';
 import FirebaseApp from '../../firebase/config';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const auth = getAuth(FirebaseApp);
 
-function Home() {
+function HomeContainer() {
     const [usuario, setUsuario] = React.useState(null);
 
     onAuthStateChanged(auth, (userFirebase) => {
@@ -23,4 +23,4 @@ function Home() {
     )
 }
 
-export default Home;
+export default HomeContainer;

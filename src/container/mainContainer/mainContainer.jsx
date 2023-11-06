@@ -1,8 +1,12 @@
 import { styled } from "@mui/material/styles";
-import { Grid, Paper } from "@mui/material";
+import { Button, Grid, Paper } from "@mui/material";
 import { Container } from "@mui/system";
 import React from "react";
 import { Link } from "react-router-dom";
+import firebaseApp from "../../firebase/config";
+import { getAuth, signOut } from "firebase/auth";
+
+const auth = getAuth(firebaseApp);
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#AC8085",
@@ -15,11 +19,23 @@ const Item = styled(Paper)(({ theme }) => ({
   minHeight: "200%",
 }));
 
-function MainContainer() {
+function MainContainer({ emailUser }) {
   // var carloncha = 'te amo';
 
   return (
     <Container maxWidth="lg" sx={{ marginTop: "17%" }}>
+
+      <Grid container>
+        <p>Bienvenido: {emailUser}</p>
+        <CustomButton
+          variant="contained"
+          sx={{ mb: 2, ml: 97 }}
+          onClick={() => signOut(auth)}
+        >
+          Cerrar sesion
+        </CustomButton>
+      </Grid>
+
       <Grid container spacing={2}>
         <Grid item xs={4}>
           <Link to={"/compras"} style={{ textDecoration: "none" }}>
@@ -42,3 +58,15 @@ function MainContainer() {
 }
 
 export default MainContainer;
+
+
+const CustomButton = styled(Button)({
+  backgroundColor: "#628D97",
+  color: "white",
+  border: "1px solid #628D97",
+  borderRadius: "8px",
+  fontSize: "12px",
+  "&:hover": {
+    backgroundColor: "#628D97",
+  }
+});
