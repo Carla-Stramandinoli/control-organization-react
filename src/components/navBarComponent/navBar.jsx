@@ -13,13 +13,16 @@ import { Link } from "react-router-dom";
 
 function NavBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+  
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ backgroundColor: "#9E768F" }}>
@@ -65,6 +68,7 @@ function NavBar() {
           <Link to={"/"} style={{ textDecoration: "none", color: "white" }}>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Home
+
             </Typography>
           </Link>
         </Toolbar>
