@@ -18,78 +18,74 @@ import {
 } from "@mui/material";
 import React from "react";
 import Swal from "sweetalert2";
+import FirebaseApp from '../../firebase/config';
+import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc, getDoc, setDoc } from "firebase/firestore";
+
+const db = getFirestore(FirebaseApp);
 
 function AddProduct({ sendProdLoad }) {
-  const [product, setProduct] = React.useState("");
-  const [category, setCategory] = React.useState("");
-  const [quantity, setQuantity] = React.useState(0);
-  const [measure, setMeasure] = React.useState("kg");
-  const [id, setId] = React.useState(0);
 
-  const handleChangeProd = (e) => {
-    setProduct(e.target.value);
-  };
+  const initialValue = {
+    name: "",
+    quantity: "",
+    measure: "",
+    category: "",
+    id: 1
+  }
 
-  const handleChangeCat = (e) => {
-    setCategory(e.target.value);
-  };
+  const [product, setProduct] = React.useState(initialValue);
+  const [lastId, setLastId] = React.useState(1);
 
-  const handleChangeQuantity = (e) => {
-    const inputValue = parseInt(e.target.value, 10);
-    if (!isNaN(inputValue) && inputValue >= 0 && inputValue <= 1000) {
-      setQuantity(inputValue);
-    }
-  };
+  const captureInputs = (e) => {
+    const { name, value } = e.target;
+    setProduct({ ...product, [name]: value });
+  }
 
-  const handleChangeMeasure = (e) => {
-    setMeasure(e.target.value);
-  };
-
-  const addProductTable = () => {
+  const addProductTable = async (e) => {
+    e.preventDefault();
     if (
-      product === "" ||
-      category === "" ||
-      quantity === "" ||
-      measure === ""
+      product.name === "" ||
+      product.category === "" ||
+      product.quantity === "" ||
+      product.measure === ""
     ) {
-      console.log(product);
       Swal.fire("Todos los campos deben estar completos!");
       return;
     }
-    const newProduct = {
-      id,
-      product,
-      quantity,
-      measure,
-      category,
-    };
+    const newProduct = { ...product, id: lastId };
+    setLastId(lastId + 1);
     sendProdLoad(newProduct);
-    setProduct("");
-    setCategory("");
-    setQuantity(0);
-    setMeasure("kg");
-    setId(id + 1);
-  };
+    try {
+      await addDoc(collection(db, " "), {
+        ...product
+      })
+    } catch (error) {
+      console.log(error)
+    }
+    setProduct({ ...initialValue });
+  }
 
   return (
     <Container>
       <CustomCard>
         <CardActionArea>
-          <CardContent sx={{ padding: "17px" }}>
+          <CardContent onSubmit={addProductTable} sx={{ padding: "17px" }}>
             <Grid>
               <Grid container item xs={12} style={gridStyle}>
                 <FormLabel>Producto</FormLabel>
                 <Input
+                  name="name"
                   placeholder="Producto"
                   type="text"
-                  value={product}
-                  onChange={handleChangeProd}
+                  value={product.name}
+                  onChange={captureInputs}
                 />
                 <FormLabel>Cantidad</FormLabel>
                 <Input
+                  name="quantity"
                   type="interger"
-                  value={quantity}
-                  onChange={handleChangeQuantity}
+                  value={product.quantity}
+                  onChange={captureInputs}
                 />
               </Grid>
               <FormControl
@@ -98,29 +94,30 @@ function AddProduct({ sendProdLoad }) {
               >
                 <FormLabel>Medida</FormLabel>
                 <RadioGroup
+                  name="measure"
                   style={gridStyle}
-                  value={measure}
-                  onChange={handleChangeMeasure}
+                  value={product.measure}
+                  onChange={captureInputs}
                   row
                 >
                   <FormControlLabel
                     value="kg"
-                    control={<Radio style={{color:"#9E768F"}} />}
+                    control={<Radio style={{ color: "#9E768F" }} />}
                     label="Kg"
                   />
                   <FormControlLabel
                     value="grs"
-                    control={<Radio style={{color:"#9E768F"}} />}
+                    control={<Radio style={{ color: "#9E768F" }} />}
                     label="Grs"
                   />
                   <FormControlLabel
                     value="paquete"
-                    control={<Radio style={{color:"#9E768F"}} />}
+                    control={<Radio style={{ color: "#9E768F" }} />}
                     label="Paquete"
                   />
                   <FormControlLabel
                     value="unidad"
-                    control={<Radio style={{color:"#9E768F"}} />}
+                    control={<Radio style={{ color: "#9E768F" }} />}
                     label="Unidad"
                   />
                 </RadioGroup>
@@ -131,8 +128,9 @@ function AddProduct({ sendProdLoad }) {
                     Categoria
                   </InputLabel>
                   <Select
-                    value={category}
-                    onChange={handleChangeCat}
+                    name="category"
+                    value={product.category}
+                    onChange={captureInputs}
                     sx={{ marginTop: 1 }}
                   >
                     <MenuItem value={1}>Verduleria</MenuItem>

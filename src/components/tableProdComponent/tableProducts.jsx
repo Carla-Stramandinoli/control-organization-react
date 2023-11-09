@@ -35,7 +35,7 @@ function TableProducts({ category, products, deleteElement }) {
               {category === 0
                 ? products.map((prod) => (
                     <TableRow key={prod.id}>
-                      <TableCell align="center">{prod.product}</TableCell>
+                      <TableCell align="center">{prod.name}</TableCell>
                       {prod.quantity <= 1 ? (
                         <TableCell align="center">
                           {prod.quantity + " " + prod.measure}
@@ -57,7 +57,7 @@ function TableProducts({ category, products, deleteElement }) {
                   ))
                 : prodFilter.map((prod) => (
                     <TableRow key={prod.id}>
-                      <TableCell align="center">{prod.product}</TableCell>
+                      <TableCell align="center">{prod.name}</TableCell>
                       {prod.quantity <= 1 ? (
                         <TableCell align="center">
                           {prod.quantity + " " + prod.measure}
