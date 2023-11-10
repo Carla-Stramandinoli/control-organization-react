@@ -19,7 +19,7 @@ import {
 import React from "react";
 import Swal from "sweetalert2";
 import FirebaseApp from '../../firebase/config';
-import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc, getDoc, setDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 const db = getFirestore(FirebaseApp);
 
@@ -33,9 +33,11 @@ function AddProduct({ sendProdLoad }) {
     id: 1
   }
 
+  // variables de estado
   const [product, setProduct] = React.useState(initialValue);
   const [lastId, setLastId] = React.useState(1);
 
+  // funcion para capturar inputs
   const captureInputs = (e) => {
     const { name, value } = e.target;
     setProduct({ ...product, [name]: value });
@@ -56,19 +58,22 @@ function AddProduct({ sendProdLoad }) {
     setLastId(lastId + 1);
     sendProdLoad(newProduct);
     try {
-      await addDoc(collection(db, " "), {
+      await addDoc(collection(db, "productosCompras"), {
         ...product
       })
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
+    /* LANZAR UN EVENTO HACIA ARRIBA ( y QUE EL COMPONENTE PADRE ACTUALIZE LA TABLA / LISTA CON EL NUEVO PRODUCTO ) */
     setProduct({ ...initialValue });
   }
 
   return (
     <Container>
       <CustomCard>
-        <CardActionArea>
+        <CardActionArea 
+        component="a"
+        >
           <CardContent onSubmit={addProductTable} sx={{ padding: "17px" }}>
             <Grid>
               <Grid container item xs={12} style={gridStyle}>

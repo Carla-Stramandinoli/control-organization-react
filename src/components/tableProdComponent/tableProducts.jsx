@@ -15,17 +15,19 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline"
 
 function TableProducts({ category, products, deleteElement }) {
   const prodFilter =
-  category.key === 0
-    ? products
-    : products.filter((prod) => prod.category === category.key);
-    
+    category.key === 0
+      ? products
+      : products.filter((prod) => prod.category === category.key);
+  console.log("products", products);
+  console.log("category", category);
+
   return (
     <Container>
       <Grid container style={styleGrid}>
         <TableContainer component={Paper} sx={{ width: "70%" }}>
           <Table aria-label="simple table">
             <TableHead>
-              <TableRow sx={{backgroundColor: '#B98A7A'}}>
+              <TableRow sx={{ backgroundColor: '#B98A7A' }}>
                 <TableCell align="center" style={styleTiTable}>Producto</TableCell>
                 <TableCell align="center" style={styleTiTable}>Cantidad</TableCell>
                 <TableCell align="center"></TableCell>
@@ -34,49 +36,49 @@ function TableProducts({ category, products, deleteElement }) {
             <TableBody>
               {category === 0
                 ? products.map((prod) => (
-                    <TableRow key={prod.id}>
-                      <TableCell align="center">{prod.name}</TableCell>
-                      {prod.quantity <= 1 ? (
-                        <TableCell align="center">
-                          {prod.quantity + " " + prod.measure}
-                        </TableCell>
-                      ) : (
-                        <TableCell align="center">
-                          {prod.quantity + " " + prod.measure + "s"}
-                        </TableCell>
-                      )}
+                  <TableRow key={prod.id}>
+                    <TableCell align="center">{prod.name}</TableCell>
+                    {prod.quantity <= 1 ? (
                       <TableCell align="center">
-                        <Button
-                          onClick={() => deleteElement(prod.id)}
-                          sx={{ color: "black" }}
-                        >
-                          <DeleteOutlineIcon />
-                        </Button>
+                        {prod.quantity + " " + prod.measure}
                       </TableCell>
-                    </TableRow>
-                  ))
+                    ) : (
+                      <TableCell align="center">
+                        {prod.quantity + " " + prod.measure + "s"}
+                      </TableCell>
+                    )}
+                    <TableCell align="center">
+                      <Button
+                        onClick={() => deleteElement(prod.id)}
+                        sx={{ color: "black" }}
+                      >
+                        <DeleteOutlineIcon />
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))
                 : prodFilter.map((prod) => (
-                    <TableRow key={prod.id}>
-                      <TableCell align="center">{prod.name}</TableCell>
-                      {prod.quantity <= 1 ? (
-                        <TableCell align="center">
-                          {prod.quantity + " " + prod.measure}
-                        </TableCell>
-                      ) : (
-                        <TableCell align="center">
-                          {prod.quantity + " " + prod.measure + "s"}
-                        </TableCell>
-                      )}
+                  <TableRow key={prod.id}>
+                    <TableCell align="center">{prod.name}</TableCell>
+                    {prod.quantity <= 1 ? (
                       <TableCell align="center">
-                        <Button
-                          onClick={() => deleteElement(prod.id)}
-                          sx={{ color: "black" }}
-                        >
-                          <DeleteOutlineIcon />
-                        </Button>
+                        {prod.quantity + " " + prod.measure}
                       </TableCell>
-                    </TableRow>
-                  ))}
+                    ) : (
+                      <TableCell align="center">
+                        {prod.quantity + " " + prod.measure + "s"}
+                      </TableCell>
+                    )}
+                    <TableCell align="center">
+                      <Button
+                        onClick={() => deleteElement(prod.id)}
+                        sx={{ color: "black" }}
+                      >
+                        <DeleteOutlineIcon />
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
             </TableBody>
           </Table>
         </TableContainer>
@@ -92,7 +94,7 @@ const styleGrid = {
   justifyContent: "center",
   alignItems: "center",
   paddingTop: 20,
-} 
+}
 
 const styleTiTable = {
   color: 'white',
