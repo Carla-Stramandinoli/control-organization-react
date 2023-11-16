@@ -19,7 +19,10 @@ function TableProducts({ category, products, deleteElement }) {
       ? products
       : products.filter((prod) => prod.category === category.key);
   console.log("products", products);
+  console.log("products name", products[0]);
+  console.log("products category", category.id);
   console.log("category", category);
+  console.log("category key", category[1].key);
 
   return (
     <Container>
@@ -35,7 +38,9 @@ function TableProducts({ category, products, deleteElement }) {
             </TableHead>
             <TableBody>
               {category === 0
-                ? products.map((prod) => (
+                ? products.map((prodArray) => (
+                   prodArray.map((prod) => (
+
                   <TableRow key={prod.id}>
                     <TableCell align="center">{prod.name}</TableCell>
                     {prod.quantity <= 1 ? (
@@ -56,29 +61,31 @@ function TableProducts({ category, products, deleteElement }) {
                       </Button>
                     </TableCell>
                   </TableRow>
-                ))
-                : prodFilter.map((prod) => (
-                  <TableRow key={prod.id}>
-                    <TableCell align="center">{prod.name}</TableCell>
-                    {prod.quantity <= 1 ? (
-                      <TableCell align="center">
-                        {prod.quantity + " " + prod.measure}
-                      </TableCell>
-                    ) : (
-                      <TableCell align="center">
-                        {prod.quantity + " " + prod.measure + "s"}
-                      </TableCell>
-                    )}
-                    <TableCell align="center">
-                      <Button
-                        onClick={() => deleteElement(prod.id)}
-                        sx={{ color: "black" }}
-                      >
-                        <DeleteOutlineIcon />
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                ))}
+                ))))
+                    : prodFilter.map((prodArray) => (
+                      prodArray.map((prod) => (
+
+                      <TableRow key={prod.id}>
+                        <TableCell align="center">{prod.name}</TableCell>
+                        {prod.quantity <= 1 ? (
+                          <TableCell align="center">
+                            {prod.quantity + " " + prod.measure}
+                          </TableCell>
+                        ) : (
+                          <TableCell align="center">
+                            {prod.quantity + " " + prod.measure + "s"}
+                          </TableCell>
+                        )}
+                        <TableCell align="center">
+                          <Button
+                            onClick={() => deleteElement(prod.id)}
+                            sx={{ color: "black" }}
+                          >
+                            <DeleteOutlineIcon />
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                    ))))}
             </TableBody>
           </Table>
         </TableContainer>

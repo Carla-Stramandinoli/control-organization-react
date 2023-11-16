@@ -50,11 +50,11 @@ function ListShopping() {
           const docs = [];
           querySnapshot.forEach((doc) => {
             console.log("doc", doc.data());
-            console.log("id", doc.id);
             docs.push({ ...doc.data(), id: doc.id })
           })
           setListProducts(docs);
           console.log("listaproductos", docs)
+          console.log("listaproductos name", docs.name)
           console.log("productos", products)
         } catch (error) {
           console.log("error", error);
