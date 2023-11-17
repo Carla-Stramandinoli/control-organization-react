@@ -64,7 +64,6 @@ function AddProduct({ sendProdLoad }) {
     } catch (error) {
       console.log(error);
     }
-    /* LANZAR UN EVENTO HACIA ARRIBA ( y QUE EL COMPONENTE PADRE ACTUALIZE LA TABLA / LISTA CON EL NUEVO PRODUCTO ) */
     setProduct({ ...initialValue });
   }
 

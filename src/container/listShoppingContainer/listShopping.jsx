@@ -25,7 +25,7 @@ function ListShopping() {
   const [selectedCategory, setSelectedCategory] = React.useState(categoriesShopping);
 
   const [listProducts, setListProducts] = React.useState([]);
-  
+
   const handleSendData = (newProduct) => {
     setProducts([...products, newProduct]);
   };
@@ -40,28 +40,25 @@ function ListShopping() {
     setSelectedCategory(category);
   };
 
-    // funcion para renderizar la lista de productos
-    useEffect(() => {
-      const getListProduct = async () => {
-        try {
-          const querySnapshot = await getDocs(collection(db, "productosCompras"))
-          console.log("querySnapshot", querySnapshot.docs.map(doc => doc.data()));
-
-          const docs = [];
-          querySnapshot.forEach((doc) => {
-            console.log("doc", doc.data());
-            docs.push({ ...doc.data(), id: doc.id })
-          })
-          setListProducts(docs);
-          console.log("listaproductos", docs)
-          console.log("listaproductos name", docs.name)
-          console.log("productos", products)
-        } catch (error) {
-          console.log("error", error);
-        }
+  // funcion para renderizar la lista de productos
+  useEffect(() => {
+    const getListProduct = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "productosCompras"))
+        const docs = [];
+        querySnapshot.forEach(function(doc){
+          return   docs.push(
+            { ...doc.data(), id: doc.id }
+            )
+        })
+        console.log(docs);
+        setListProducts(docs);
+      } catch (error) {
+        console.log("error", error);
       }
-      getListProduct();
-    }, [])
+    }
+    getListProduct();
+  }, [])
 
   return (
     <div>
@@ -73,7 +70,8 @@ function ListShopping() {
       />
       <TableProducts
         category={selectedCategory}
-        products={[products, listProducts]}
+        products={products}
+        listProducts={listProducts}
         deleteElement={deleteElement}
       />
     </div>
