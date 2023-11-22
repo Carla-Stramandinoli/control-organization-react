@@ -17,11 +17,10 @@ function TableProducts({ category, products, listProducts, deleteElement }) {
   const prodFilter =
     category.key === 0
       ? listProducts
-      : listProducts.filter((prod) => prod.category === category.key);
-
-
-
-
+      : listProducts.filter(function (prod) {
+        console.log("catergory", category)
+        return prod.category === category.key;
+      });
 
 
   return (

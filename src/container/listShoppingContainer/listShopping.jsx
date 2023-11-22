@@ -13,8 +13,10 @@ import { getFirestore, collection, getDocs, doc, deleteDoc, getDoc, setDoc } fro
 const db = getFirestore(FirebaseApp);
 
 
+const all = { id: "all", title: "todos", key: 0 };
+
 const categoriesShopping = [
-  { id: "all", title: "todos", key: 0 },
+ all,
   { id: "greengrocery", title: "verduleria", key: 1 },
   { id: "supermarket", title: "supermercado", key: 2 },
   { id: "others", title: "otros", key: 3 },
@@ -22,7 +24,7 @@ const categoriesShopping = [
 
 function ListShopping() {
   const [products, setProducts] = React.useState([]);
-  const [selectedCategory, setSelectedCategory] = React.useState(categoriesShopping);
+  const [selectedCategory, setSelectedCategory] = React.useState(  all);
 
   const [listProducts, setListProducts] = React.useState([]);
 
