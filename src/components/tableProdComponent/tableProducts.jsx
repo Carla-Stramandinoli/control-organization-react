@@ -13,14 +13,11 @@ import {
 } from "@mui/material"
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline"
 
-function TableProducts({ category, products, listProducts, deleteElement }) {
+function TableProducts({ category, listProducts, deleteElement }) {
   const prodFilter =
     category.key === 0
       ? listProducts
-      : listProducts.filter(function (prod) {
-        console.log("catergory", category)
-        return prod.category === category.key;
-      });
+      : listProducts.filter((prod) => prod.category === category.key);
 
 
   return (

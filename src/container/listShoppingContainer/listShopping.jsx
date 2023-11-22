@@ -1,7 +1,3 @@
-// modificar que cuando se agregue un producto se imprima a la primera vez
-// en todas las tabs, y no cuando se cambie de tabs. 
-
-
 import React, { useEffect } from "react";
 import TabsProducts from "../tabsContainer/tabsProducts";
 import AddProduct from "../../components/addProdComponent/addProduct";
@@ -16,7 +12,7 @@ const db = getFirestore(FirebaseApp);
 const all = { id: "all", title: "todos", key: 0 };
 
 const categoriesShopping = [
- all,
+  all,
   { id: "greengrocery", title: "verduleria", key: 1 },
   { id: "supermarket", title: "supermercado", key: 2 },
   { id: "others", title: "otros", key: 3 },
@@ -24,7 +20,7 @@ const categoriesShopping = [
 
 function ListShopping() {
   const [products, setProducts] = React.useState([]);
-  const [selectedCategory, setSelectedCategory] = React.useState(  all);
+  const [selectedCategory, setSelectedCategory] = React.useState(all);
 
   const [listProducts, setListProducts] = React.useState([]);
 
@@ -32,10 +28,10 @@ function ListShopping() {
     setProducts([...products, newProduct]);
   };
 
-  const deleteElement = (id) => {
-    const updatedProducts = products.filter((prod) => prod.id !== id);
-    console.log(id);
-    setProducts(updatedProducts);
+
+  // funcion para eliminar elemento
+  const deleteElement = async (id) => {
+    await deleteDoc(doc(db, "productosCompras", id));
   };
 
   const handleCategoryChange = (category) => {
@@ -48,19 +44,18 @@ function ListShopping() {
       try {
         const querySnapshot = await getDocs(collection(db, "productosCompras"))
         const docs = [];
-        querySnapshot.forEach(function(doc){
-          return   docs.push(
+        querySnapshot.forEach((doc) =>
+          docs.push(
             { ...doc.data(), id: doc.id }
-            )
-        })
-        console.log(docs);
+          )
+        )
         setListProducts(docs);
       } catch (error) {
         console.log("error", error);
       }
     }
     getListProduct();
-  }, [])
+  }, [listProducts])
 
   return (
     <div>
@@ -72,7 +67,6 @@ function ListShopping() {
       />
       <TableProducts
         category={selectedCategory}
-        products={products}
         listProducts={listProducts}
         deleteElement={deleteElement}
       />
