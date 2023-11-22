@@ -112,7 +112,7 @@ function AddProduct({ sendProdLoad }) {
                   <FormControlLabel
                     value="grs"
                     control={<Radio style={{ color: "#9E768F" }} />}
-                    label="Grs"
+                    label="Gr"
                   />
                   <FormControlLabel
                     value="paquete"

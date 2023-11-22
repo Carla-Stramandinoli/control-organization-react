@@ -13,16 +13,15 @@ import {
 } from "@mui/material"
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline"
 
-function TableProducts({ category, products,listProducts,deleteElement }) {
+function TableProducts({ category, products, listProducts, deleteElement }) {
   const prodFilter =
     category.key === 0
-      ? products
-      : products.filter((prod) => (
-         prod.category === category.key
-      ));
+      ? listProducts
+      : listProducts.filter((prod) => prod.category === category.key);
 
-console.log("producto nuevo" ,products);
-console.log("lista de productos" ,listProducts);
+
+
+
 
 
   return (
@@ -39,50 +38,50 @@ console.log("lista de productos" ,listProducts);
             </TableHead>
             <TableBody>
               {category === 0
-                ? listProducts.map((prod) => (
-                    <TableRow key={prod.id}>
-                      <TableCell align="center">{prod.name}</TableCell>
-                      {prod.quantity <= 1 ? (
-                        <TableCell align="center">
-                          {prod.quantity + " " + prod.measure}
-                        </TableCell>
-                      ) : (
-                        <TableCell align="center">
-                          {prod.quantity + " " + prod.measure + "s"}
-                        </TableCell>
-                      )}
+                ? prodFilter.map((prod) => (
+                  <TableRow key={prod.id}>
+                    <TableCell align="center">{prod.name}</TableCell>
+                    {prod.quantity <= 1 ? (
                       <TableCell align="center">
-                        <Button
-                          onClick={() => deleteElement(prod.id)}
-                          sx={{ color: "black" }}
-                        >
-                          <DeleteOutlineIcon />
-                        </Button>
+                        {prod.quantity + " " + prod.measure}
                       </TableCell>
-                    </TableRow>
-                  ))
-                : listProducts.map((prod) => (
-                    <TableRow key={prod.id}>
-                      <TableCell align="center">{prod.name}</TableCell>
-                      {prod.quantity <= 1 ? (
-                        <TableCell align="center">
-                          {prod.quantity + " " + prod.measure}
-                        </TableCell>
-                      ) : (
-                        <TableCell align="center">
-                          {prod.quantity + " " + prod.measure + "s"}
-                        </TableCell>
-                      )}
+                    ) : (
                       <TableCell align="center">
-                        <Button
-                          onClick={() => deleteElement(prod.id)}
-                          sx={{ color: "black" }}
-                        >
-                          <DeleteOutlineIcon />
-                        </Button>
+                        {prod.quantity + " " + prod.measure + "s"}
                       </TableCell>
-                    </TableRow>
-                  ))}
+                    )}
+                    <TableCell align="center">
+                      <Button
+                        onClick={() => deleteElement(prod.id)}
+                        sx={{ color: "black" }}
+                      >
+                        <DeleteOutlineIcon />
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))
+                : prodFilter.map((prod) => (
+                  <TableRow key={prod.id}>
+                    <TableCell align="center">{prod.name}</TableCell>
+                    {prod.quantity <= 1 ? (
+                      <TableCell align="center">
+                        {prod.quantity + " " + prod.measure}
+                      </TableCell>
+                    ) : (
+                      <TableCell align="center">
+                        {prod.quantity + " " + prod.measure + "s"}
+                      </TableCell>
+                    )}
+                    <TableCell align="center">
+                      <Button
+                        onClick={() => deleteElement(prod.id)}
+                        sx={{ color: "black" }}
+                      >
+                        <DeleteOutlineIcon />
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
             </TableBody>
           </Table>
         </TableContainer>
