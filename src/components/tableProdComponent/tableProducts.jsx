@@ -12,8 +12,9 @@ import {
   TableRow,
 } from "@mui/material"
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline"
+import EditIcon from '@mui/icons-material/Edit';
 
-function TableProducts({ category, listProducts, deleteElement }) {
+function TableProducts({ category, listProducts, deleteElement, editElement }) {
   const prodFilter =
     category.key === 0
       ? listProducts
@@ -46,12 +47,18 @@ function TableProducts({ category, listProducts, deleteElement }) {
                         {prod.quantity + " " + prod.measure + "s"}
                       </TableCell>
                     )}
-                    <TableCell align="center">
+               <TableCell align="center">
                       <Button
                         onClick={() => deleteElement(prod.id)}
                         sx={{ color: "black" }}
                       >
                         <DeleteOutlineIcon />
+                      </Button>
+                      <Button
+                        onClick={() => editElement(prod)}
+                        sx={{ color: "black" }}
+                      >
+                        <EditIcon />
                       </Button>
                     </TableCell>
                   </TableRow>
@@ -74,6 +81,12 @@ function TableProducts({ category, listProducts, deleteElement }) {
                         sx={{ color: "black" }}
                       >
                         <DeleteOutlineIcon />
+                      </Button>
+                      <Button
+                        onClick={() => editElement(prod)}
+                        sx={{ color: "black" }}
+                      >
+                        <EditIcon />
                       </Button>
                     </TableCell>
                   </TableRow>

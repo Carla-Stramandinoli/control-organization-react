@@ -38,6 +38,8 @@ function ListShopping() {
     setSelectedCategory(category);
   };
 
+
+
   // funcion para renderizar la lista de productos
   useEffect(() => {
     const getListProduct = async () => {
