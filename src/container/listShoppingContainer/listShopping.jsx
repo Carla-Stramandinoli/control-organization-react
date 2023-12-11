@@ -19,13 +19,14 @@ const categoriesShopping = [
 ];
 
 function ListShopping() {
-  const [products, setProducts] = React.useState([]);
+  const [product, setProducts] = React.useState([]);
   const [selectedCategory, setSelectedCategory] = React.useState(all);
 
   const [listProducts, setListProducts] = React.useState([]);
+  const [subId, setSubId] = React.useState("");
 
   const handleSendData = (newProduct) => {
-    setProducts([...products, newProduct]);
+    setProducts([...product, newProduct]);
   };
 
 
@@ -38,7 +39,25 @@ function ListShopping() {
     setSelectedCategory(category);
   };
 
+  // funcion para editar elemento
+  const editElement = async(id) => {
+    setSubId(id);
+    console.log("edit", id)
+    try {
+      const docRef = doc(db, "productosCompras", id);
+      const docSnap = await getDoc(docRef);
+      setProducts(docSnap.data());
+    } catch (error) {
+      console.log("No se puede editar el elemento");
+      console.log(error);
+    }
+  }
 
+  useEffect(()=>{
+    if(subId !== "") {
+      editElement(subId)
+    }
+  }, [subId])
 
   // funcion para renderizar la lista de productos
   useEffect(() => {
@@ -62,7 +81,7 @@ function ListShopping() {
   return (
     <div>
       <NavBar />
-      <AddProduct sendProdLoad={handleSendData} />
+      <AddProduct sendProdLoad={handleSendData} productoEditar={product} />
       <TabsProducts
         categories={categoriesShopping}
         onCategoryChange={handleCategoryChange}
@@ -71,6 +90,7 @@ function ListShopping() {
         category={selectedCategory}
         listProducts={listProducts}
         deleteElement={deleteElement}
+        editElement={editElement}
       />
     </div>
   );

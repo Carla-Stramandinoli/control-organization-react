@@ -55,7 +55,7 @@ function TableProducts({ category, listProducts, deleteElement, editElement }) {
                         <DeleteOutlineIcon />
                       </Button>
                       <Button
-                        onClick={() => editElement(prod)}
+                        onClick={() => editElement(prod.id)}
                         sx={{ color: "black" }}
                       >
                         <EditIcon />
@@ -83,7 +83,7 @@ function TableProducts({ category, listProducts, deleteElement, editElement }) {
                         <DeleteOutlineIcon />
                       </Button>
                       <Button
-                        onClick={() => editElement(prod)}
+                        onClick={() => editElement(prod.id)}
                         sx={{ color: "black" }}
                       >
                         <EditIcon />

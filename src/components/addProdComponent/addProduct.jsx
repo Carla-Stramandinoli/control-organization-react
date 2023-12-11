@@ -16,14 +16,14 @@ import {
   RadioGroup,
   Select,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import Swal from "sweetalert2";
 import FirebaseApp from '../../firebase/config';
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 const db = getFirestore(FirebaseApp);
 
-function AddProduct({ sendProdLoad }) {
+function AddProduct({ sendProdLoad ,productoEditar}) {
 
   const initialValue = {
     name: "",
@@ -35,13 +35,21 @@ function AddProduct({ sendProdLoad }) {
 
   // variables de estado
   const [product, setProduct] = React.useState(initialValue);
-  const [lastId, setLastId] = React.useState(1);
 
   // funcion para capturar inputs
   const captureInputs = (e) => {
     const { name, value } = e.target;
     setProduct({ ...product, [name]: value });
+
+
   }
+
+  useEffect(()=>{
+    console.log(productoEditar)
+    if (productoEditar.length !== 0){
+      setProduct(productoEditar)
+    }
+  }, [productoEditar])
 
   const addProductTable = async (e) => {
     e.preventDefault();
@@ -54,9 +62,7 @@ function AddProduct({ sendProdLoad }) {
       Swal.fire("Todos los campos deben estar completos!");
       return;
     }
-    const newProduct = { ...product, id: lastId };
-    setLastId(lastId + 1);
-    sendProdLoad(newProduct);
+    sendProdLoad(product);
     try {
       await addDoc(collection(db, "productosCompras"), {
         ...product
